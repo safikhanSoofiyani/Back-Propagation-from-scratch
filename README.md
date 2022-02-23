@@ -18,9 +18,14 @@ Authors :  Vamsi Sai Krishna Malineni(OE20S302) and Mohammed Safi Ur Rahman Khan
     from keras.datasets import fashion_mnist
   ```
    <h4> 4) The sample images of each class can be seen on the local machine by running this function: "plot_locally()"
-    
-   <h4> 6) In order to run a wandb sweep, the hyper_parameters have to be set up.
-     <h4> Run the following code snippet to setup the hyper_parameters, you can change them according to your experiment's requirement :
+   <h4> 5) To login to your wandb account, paste the API key. You can find it in the USER SETTINGS
+   <h4> 6)  To log the data into wandb set the following variable in each optimization method.
+     
+   ```python
+     wandb_log= True
+   ```
+   <h4> 7) In order to run a wandb sweep, the hyper_parameters have to be set up.
+   <h4> Run the following code snippet to setup the hyper_parameters, you can change them according to your experiment's requirement :
      
      
   ```python
@@ -65,7 +70,7 @@ Authors :  Vamsi Sai Krishna Malineni(OE20S302) and Mohammed Safi Ur Rahman Khan
 
   ```
      
-   <h4> 7) To run a wandb sweep, use the following code snippet :
+   <h4> 8) To run a wandb sweep, use the following code snippet :
      
      
   ```python
@@ -82,6 +87,7 @@ Authors :  Vamsi Sai Krishna Malineni(OE20S302) and Mohammed Safi Ur Rahman Khan
      sweep_id = wandb.sweep(sweep_config, entity="", project="")
      wandb.agent(sweep_id, train)
   ```
+     
 <h3> Available options to customize the Neural Network:
   
 <h4> 1) Loss functions
