@@ -21,6 +21,59 @@ If you are running the code on Google colab, all the above mentioned libraries a
 ```python
 !pip install wandb
 ```
+# Training the Neural Network:
+To train the neural network use the following function:
+  ```python
+  fit(X_train, 
+      y_train,
+      layer_sizes,
+      wandb_log, 
+      learning_rate = 0.0001, 
+      initialization_type = "random", 
+      activation_function = "sigmoid", 
+      loss_function = "cross_entropy", 
+      mini_batch_Size = 32, 
+      max_epochs = 5, 
+      lambd = 0,
+      optimization_function = mini_batch_gd): 
+  ```
+  1. `X_train` stores the list of flattened images of training dataset.
+  2. `y_train` stores the list of labels for the images of training dataset in one-hot encoded format.
+  3. `layer_sizes` stores  the number of neurons present in each layer, including the input and the output layers.
+  4. `wandb_log` stores the boolean variable which determines whether or not the data is logged into wandb.ai
+  5. `learning_rate` stores the learning rate of the gradient descent(and its variants) optimization functions
+  6. `initialization_type` stores the weight initialization type, you can choose: `Xavier` or `random`
+  7. `activation_function` stores the activation function that is applied to all the hidden layers
+  8. `loss_function` stores the type of loss function, you can choose: `cross_entropy` or `squared error`
+  9. `mini_batch_size` stores the number of data points per batch.
+  10. `max_epochs` stores the maximum number of epochs 
+  11. `lambd` stores the regularization constant for weight decay
+  12. `optimization_function` stores the name of gradient descent algorithm
+   
+# Addition of a new Optimization Function:
+We have given a template for adding a optimization function on the similar lines of previous functions. 
+<\br> The user need to add the following code snippets to form a new optimization function.
+  1. Declare and Initialize dictionaries and other data structures as per the requirement of optimization function.
+  2. New parameter update rule  for the network parameters.
+ 
+ The new optimization function looks like this :
+```python
+new_optimization_function_name(X_train, y_train, eta, max_epochs, layers, mini_batch_size, lambd, loss_function, activation, parameters,wandb_log=False )
+```
+  1. `X_train` stores the list of flattened images of training dataset.
+  2. `y_train` stores the list of labels for the images of training dataset in one-hot encoded format.
+  3. `eta` stores the learning rate.
+  4. `max_epochs` stores the maximum number of epochs.
+  5. `layers` stores the number of neurons per each layer.
+  6. `mini_batch_size` stores the number of data points per batch.
+  7. `lambd` stores the regularization constant for weight decay.
+  8. `loss_function` stores the type of loss function, you can choose: `cross_entropy` or `squared error`.
+  9. `activation` stores the activation function that is applied to all the hidden layers.
+  10. `parameters` stores the intial parameters (weights and biases).
+  11. `wandb_log` stores the boolean variable which determines whether or not the data is logged into wandb.ai
+  
+
+
 # Wandb Functionality:
 
 1. To `use wandb mode`, find your `API key` from your wandb account and paste it in the output box after you executed this code snippet :     
