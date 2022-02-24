@@ -21,27 +21,29 @@ If you are running the code on Google colab, all the above mentioned libraries a
 ```python
 !pip install wandb
 ```
-# Code Usage:
-1. The entire code is modularised using functions. The code structure is such that it can be run sequentially till the end by pressing **SHIFT+ENTER** for each cell, alternatively you can use **Run all cells**
-2. If you wish to get results of a specific hyperparameter configuration on the local machine
-3. To run a wandb sweep, use the following code snippet :     
-     
+# Wandb Functionality:
+
+1. To `use wandb mode`, find your `API key` from your wandb account and paste it in the output box after you executed this code snippet :     
   ```python
-     
-  sweep_config = {
-    'method' : 'bayes',
-    'metric' :{
-        'name': 'Validation_Accuracy',
-        'goal': 'maximize'
-    },
-    'parameters': hyperparameters
-  }
-     
-     sweep_id = wandb.sweep(sweep_config, entity="", project="")
-     wandb.agent(sweep_id, train)
+!wandb login --relogin
+# enter the entity and project name in these variables
+entity_name="_entity_name_"
+project_name="_project_name_"
   ```
-     
-<h3> Available options to customize the Neural Network:
+2. You can `perform experiments` by running the sweeps, using this function:
+```python
+sweeper(entity_name,project_name)
+```
+3. You can `compare` the performance of two `loss functions` by using this function:
+```python
+loss_compare_sweeper(entity_name,project_name)
+```
+4. You can plot the `confusion matrix` for the test dataset by using this function, this returns predicted labels and true labels:
+```python
+y_pred,y_t=plot_confmat_wandb(entity_name,project_name)
+``` 
+--------------------------------------------------------------     
+# Available options to customize the Neural Network:
   
 <h4> 1) Loss functions
   
